@@ -10,7 +10,6 @@ def read_files(glob_list):
     for file in glob_list:
         with open(file) as f:
             for line in f.readlines():
-                #print(line)
                 parse_line(line)
 
 
@@ -20,12 +19,13 @@ def parse_line(line):
         x = re.search('\(Number\sof\sconcurrent\ssessions:\s',line)
         if x:
             #try:
-            print (line[:23], end = ' ')
+            d_time =  line[:23]
             y = re.search("\ssessions:\s", line)
             if y:
-                print(line[y.end():-3])
+                c_users = line[y.end():-3]
+                print (d_time, c_users)
             else:
-                print('ISSUE '+ line )
+                 print('ISSUE '+ line )
             
             #print()
     #except:
